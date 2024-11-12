@@ -1,7 +1,6 @@
-// src/pages/AreasPage.js
+
 import './styles.css'; 
 import Navbar from '../components/Navbar';
-// src/pages/AreasPage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -42,7 +41,7 @@ function AreasPage() {
                             </Link>
                         </div>
 
-                        {/* Enlace específico para los quizzes de la materia */}
+                        {}
                         <div className="icon-box">
                             <Link to={`/quizes/${materia}`}>
                                 <img src="/images/exam.png" alt="Quizzes" />

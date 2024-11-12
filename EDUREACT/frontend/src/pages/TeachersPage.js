@@ -1,8 +1,8 @@
-// src/pages/TeachersPage.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css';
-import './teachersstyle.css'; // Asegúrate de que el archivo CSS esté en esta ubicación
+import './teachersstyle.css';
 import Navbar from '../components/Navbar';
 function TeachersPage() {
     const [maestros, setMaestros] = useState([]);

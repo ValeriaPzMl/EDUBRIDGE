@@ -1,4 +1,4 @@
-// src/pages/ForoPage.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ChatList from '../components/ChatList';

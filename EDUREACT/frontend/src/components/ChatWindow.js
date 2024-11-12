@@ -1,4 +1,4 @@
-// src/components/ChatWindow.js
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../pages/forossty.css';
@@ -14,7 +14,7 @@ function ChatWindow({ mensajes, usuario, materiaSeleccionada }) {
 
         try {
             await axios.post(`/api/foros/${materiaSeleccionada}`, { contenido }, { withCredentials: true });
-            setContenido(''); // Limpiar el mensaje después de enviarlo
+            setContenido('');
         } catch (error) {
             console.error("Error al enviar el mensaje:", error);
         }

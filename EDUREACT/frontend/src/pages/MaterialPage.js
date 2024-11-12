@@ -1,8 +1,8 @@
-// src/pages/MaterialPage.js
+
 import './styles.css';
 import './forossty.css';
 import Navbar from '../components/Navbar';
-// src/pages/MaterialPage.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CategoryList from '../components/CategoryList';

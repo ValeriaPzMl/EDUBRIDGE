@@ -5,7 +5,7 @@ import MongoStore from 'connect-mongo';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import cors from 'cors'; // Importar cors
+import cors from 'cors'; 
 import User from './models/User.js';
 import Message from './models/Message.js';
 import fs from 'fs';
@@ -18,10 +18,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, 'public')));
-// Configuración de CORS para permitir peticiones desde el cliente React
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
-// Conectar a la base de datos
 const user = process.env.DB_USER;
 const password = process.env.DB_PASS;
 const db = process.env.DB;
@@ -33,7 +31,6 @@ mongoose.connect(mongoUrl, { serverSelectionTimeoutMS: 20000 })
     .then(() => console.log("Conectado a MongoDB Atlas"))
     .catch(err => console.error("Error de conexión a MongoDB:", err));
 
-// Configuración de sesiones 
 app.use(session({
     secret: 'mi_secreto_super_seguro',
     resave: false,
@@ -43,9 +40,9 @@ app.use(session({
 }));
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json()); // Para manejar JSON en las solicitudes
+app.use(express.json()); 
 
-// Función para verificar autenticación
+
 function verificarAutenticacion(req, res, next) {
     if (req.session.userId) {
         next();
@@ -54,15 +51,11 @@ function verificarAutenticacion(req, res, next) {
     }
 }
 
-// Rutas de API
 
-// Registro de usuario
-// Registro de usuario
 app.post('/api/register', async (req, res) => {
     const { nombre, apellidos, correo, contraseña, tipo, materia, idiomas } = req.body;
 
     try {
-        // Crear un nuevo usuario con los datos del formulario
         const nuevoUsuario = new User({
             nombre,
             apellidos,
@@ -73,10 +66,8 @@ app.post('/api/register', async (req, res) => {
             idiomas: tipo === 'maestro' ? idiomas.split(',') : []
         });
 
-        // Guardar el nuevo usuario en la base de datos
         const usuarioGuardado = await nuevoUsuario.save();
         
-        // Enviar una sola respuesta indicando el registro exitoso
         res.status(201).json({ message: "Usuario registrado exitosamente", userId: usuarioGuardado._id });
     } catch (err) {
         console.error("Error al registrar usuario:", err);
@@ -85,11 +76,6 @@ app.post('/api/register', async (req, res) => {
 });
 
 
-// Inicio de sesión
-
-
-// backend - server.js
-// En AuthPage.js
 app.post('/api/login', async (req, res) => {
     const { correo, contraseña } = req.body;
     try {
@@ -105,23 +91,9 @@ app.post('/api/login', async (req, res) => {
         res.status(500).json({ message: "Error al iniciar sesión" });
     }
 });
-const handleSubmit = async (e) => {
-    e.preventDefault();
-    // En AuthPage.js
-    const url = isLogin ? '/api/login' : '/api/register';
-    try {
-        const response = await axios.post(url, formData, { withCredentials: true });
-        if (response.status === 200 || response.status === 201) {
-            navigate('/menu'); // Redirige al menú principal si el login o registro es exitoso
-        }
-    } catch (error) {
-        console.error("Error:", error.response ? error.response.data.message : error.message);
-    }
-};
 
 
 
-// Cerrar sesión
 app.post('/api/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
@@ -133,15 +105,12 @@ app.post('/api/logout', (req, res) => {
     });
 });
 
-// backend/server.js
 app.get('/api/areas', (req, res) => {
     res.json({ materias });
 });
 
-// backend/server.js
 
 
-// Ruta para obtener todas las categorías de materiales
 app.get('/api/material', verificarAutenticacion, (req, res) => {
     const categoriasPath = path.join(__dirname, 'public', 'PDFS');
 
@@ -155,7 +124,6 @@ app.get('/api/material', verificarAutenticacion, (req, res) => {
 });
 
 
-// Ruta para obtener los archivos PDF de una categoría específica
 app.get('/api/material/:categoria', verificarAutenticacion, (req, res) => {
     const categoriaSeleccionada = req.params.categoria;
     const pdfPath = path.join(__dirname, 'public', 'PDFS', categoriaSeleccionada);
@@ -171,14 +139,11 @@ app.get('/api/material/:categoria', verificarAutenticacion, (req, res) => {
 });
 
 
-// Enviar mensaje en foro
 
-// Ruta para obtener todas las materias (lista de foros)
 app.get('/api/foros', verificarAutenticacion, (req, res) => {
     res.json({ materias, pageName: "Foros" });
 });
 
-// Ruta para obtener los mensajes de un foro específico
 app.get('/api/foros/:materia', verificarAutenticacion, async (req, res) => {
     const materiaSeleccionada = req.params.materia;
 
@@ -192,7 +157,6 @@ app.get('/api/foros/:materia', verificarAutenticacion, async (req, res) => {
     }
 });
 
-// Ruta para enviar un mensaje en un foro específico
 app.post('/api/foros/:materia', verificarAutenticacion, async (req, res) => {
     const { contenido } = req.body;
     const materia = req.params.materia;
@@ -213,7 +177,6 @@ app.post('/api/foros/:materia', verificarAutenticacion, async (req, res) => {
     }
 });
 app.get('/api/menu', verificarAutenticacion, (req, res) => {
-    // Supón que el menú tiene alguna información o configuración que quieres enviar al frontend
     const menuData = {
         title: "EduBridge Menu",
         sections: [
@@ -224,11 +187,10 @@ app.get('/api/menu', verificarAutenticacion, (req, res) => {
             { name: "QUIZZES", path: "/quizes" },
         ]
     };
-    res.json(menuData); // Devuelve los datos del menú al frontend
+    res.json(menuData); 
 });
 
-// Obtener perfil de usuario
-// backend/server.js
+
 
 app.get('/api/perfil', verificarAutenticacion, async (req, res) => {
     try {
@@ -245,10 +207,9 @@ app.get('/api/perfil', verificarAutenticacion, async (req, res) => {
     }
 });
 
-// backend/server.js
 
 
-// Ruta para obtener todas las categorías de quizzes
+
 app.get('/api/quizes', verificarAutenticacion, (req, res) => {
     const categoriasPath = path.join(__dirname, 'public', 'QUIZZ');
 
@@ -262,7 +223,6 @@ app.get('/api/quizes', verificarAutenticacion, (req, res) => {
 });
 
 
-// Ruta para obtener los archivos PDF de una categoría específica de quizzes
 app.get('/api/quizes/:categoria', verificarAutenticacion, (req, res) => {
     const categoriaSeleccionada = req.params.categoria;
     const pdfPath = path.join(__dirname, 'public', 'QUIZZ', categoriaSeleccionada);
@@ -277,7 +237,6 @@ app.get('/api/quizes/:categoria', verificarAutenticacion, (req, res) => {
     }
 });
 
-// backend/server.js
 
 app.get('/api/teachers', verificarAutenticacion, async (req, res) => {
     try {
@@ -289,7 +248,6 @@ app.get('/api/teachers', verificarAutenticacion, async (req, res) => {
     }
 });
 
-// Servir el frontend de React en producción
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../frontend/build')));
 
@@ -298,12 +256,10 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-// Middleware para manejar rutas no encontradas en el backend
 app.use((req, res) => {
     res.status(404).json({ message: 'Ruta no encontrada' });
 });
 
-// Iniciar servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

@@ -1,4 +1,4 @@
-// src/components/PdfList.js
+
 import '../pages/forossty.css';
 import '../pages/styles.css';
 

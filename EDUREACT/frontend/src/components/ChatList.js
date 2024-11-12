@@ -1,4 +1,4 @@
-// src/components/ChatList.js
+
 import '../pages/forossty.css';
 import '../pages/styles.css';
 import React from 'react';

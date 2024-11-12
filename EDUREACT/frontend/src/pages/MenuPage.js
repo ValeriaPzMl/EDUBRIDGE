@@ -1,7 +1,7 @@
-// src/pages/MenuPage.js
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles.css'; // Archivo CSS con los mismos estilos que en el EJS
+import './styles.css'; 
 import Navbar from '../components/Navbar';
 
 function MenuPage() {

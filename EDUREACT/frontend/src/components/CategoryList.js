@@ -1,10 +1,10 @@
-// src/components/CategoryList.js
+
 import '../pages/forossty.css';
 import '../pages/styles.css';
 import React from 'react';
 
 function CategoryList({ categorias, onCategoriaClick, categoriaSeleccionada }) {
-    console.log("Categorías en CategoryList:", categorias); // Agregar este log
+    console.log("Categorías en CategoryList:", categorias); 
 
     return (
         <div id="plist" className="people-list chatn">

@@ -1,7 +1,7 @@
-// src/pages/ProfilePage.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './profile.css'; // Asegúrate de que el archivo CSS esté en la ubicación correcta
+import './profile.css'; 
 import Navbar from '../components/Navbar';
 function ProfilePage() {
     const [usuario, setUsuario] = useState(null);
@@ -24,7 +24,7 @@ function ProfilePage() {
     const handleLogout = () => {
         axios.post('/api/logout', {}, { withCredentials: true })
             .then(() => {
-                window.location.href = '/'; // Redirige al usuario a la página de inicio después de cerrar sesión
+                window.location.href = '/'; 
             })
             .catch(err => console.error("Error al cerrar sesión:", err));
     };

@@ -1,5 +1,4 @@
-// src/pages/AuthPage.js
-import './styles.css'; // Archivo CSS con los mismos estilos que en el EJS
+import './styles.css';
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -33,8 +32,8 @@ function AuthPage({ setIsAuthenticated }) {
             const response = await axios.post(url, formData, { withCredentials: true });
             if (response.status === 200 || response.status === 201) {
                 console.log(response.data.message);
-                setIsAuthenticated(true); // Actualiza el estado de autenticación
-                navigate('/menu'); // Redirige al menú principal
+                setIsAuthenticated(true); 
+                navigate('/menu'); 
             }
         } catch (error) {
             setMessage(error.response ? error.response.data.message : "Error al conectar con el servidor");
@@ -44,12 +43,12 @@ function AuthPage({ setIsAuthenticated }) {
 
     const toggleForm = () => {
         setIsLogin(!isLogin);
-        setMessage(''); // Limpia el mensaje al cambiar entre login y registro
+        setMessage(''); 
     };
 
     return (
         <div className="container">
-            {message && <p>{message}</p>} {/* Muestra el mensaje si existe */}
+            {message && <p>{message}</p>} {}
             {isLogin ? (
                 <div className="login-container">
                     <h2>Log in</h2>

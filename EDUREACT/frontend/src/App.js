@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MenuPage from './pages/MenuPage';
@@ -8,7 +7,7 @@ import QuizPage from './pages/QuizPage';
 import ForoPage from './pages/ForoPage';
 import MaterialPage from './pages/MaterialPage';
 import AuthPage from './pages/AuthPage';
-import AreasPage from './pages/AreasPage'; // Importa el componente de Areas
+import AreasPage from './pages/AreasPage'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
