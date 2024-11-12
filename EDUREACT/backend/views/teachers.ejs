@@ -1,0 +1,39 @@
+<%- include("partials/header"); -%>
+
+
+  <link rel="stylesheet" href="./stilos/teachersstyle.css" />
+  <title>Teachers</title>
+  </head>
+
+  <body>
+
+    <%- include("partials/navbar"); -%>
+
+
+      <div class="gen">
+        <% maestros.forEach(maestro=> { %>
+          <div class="profile-card">
+            <div class="profile-icon">
+              <img src="/images/perf.png" height="100px">
+            </div>
+            <div class="info">
+              <div class="profile-name">
+                <%= maestro.nombre %>
+                  <%= maestro.apellidos %>
+              </div>
+              <div class="profile-info"><b>Mail:</b>
+                <%= maestro.correo %>
+              </div>
+              <div class="profile-info"><b>Areas:</b>
+                <%= maestro.materia || 'N/A' %>
+              </div>
+              <div class="profile-info"><b>Languages:</b>
+                <%= maestro.idiomas.join(', ') %></div>
+          </div>
+        </div>
+      <% }); %>
+    </div> 
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <%- include("partials/footer"); -%>
