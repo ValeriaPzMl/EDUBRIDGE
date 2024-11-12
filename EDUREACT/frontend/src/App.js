@@ -22,7 +22,6 @@ function App() {
                 <Route path="/teachers" element={isAuthenticated ? <TeachersPage /> : <Navigate to="/" />} />
                 <Route path="/perfil" element={isAuthenticated ? <ProfilePage /> : <Navigate to="/" />} />
                 <Route path="/quizes" element={isAuthenticated ? <QuizPage /> : <Navigate to="/" />} />
-                <Route path="/quizes/:materia" element={isAuthenticated ? <QuizPage /> : <Navigate to="/" />} />
                 <Route path="/foros" element={isAuthenticated ? <ForoPage /> : <Navigate to="/" />} />
                 <Route path="/material" element={isAuthenticated ? <MaterialPage /> : <Navigate to="/" />} />
                 <Route path="/areas" element={isAuthenticated ? <AreasPage /> : <Navigate to="/" />} /> 
