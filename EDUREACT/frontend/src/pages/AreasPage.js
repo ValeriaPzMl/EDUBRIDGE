@@ -26,7 +26,7 @@ function AreasPage() {
 
     return (
         <div>
-            <Navbar/>
+            <Navbar name="Areas"/>
             <h1>Areas of Study</h1>
             {error && <p>{error}</p>}
             {materias.map((materia, index) => (

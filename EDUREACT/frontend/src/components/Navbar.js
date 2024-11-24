@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../pages/styles.css';
 
-function Navbar() {
+function Navbar({ name }) {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary mb-3">
             <div className="container-fluid">
@@ -22,19 +21,44 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/areas">Áreas</Link>
+                            <Link
+                                className={`nav-link ${name === "Areas" ? "fw-bold" : ""}`}
+                                to="/areas"
+                            >
+                                Areas
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/foros">Foros</Link>
+                            <Link
+                                className={`nav-link ${name === "Foros" ? "fw-bold" : ""}`}
+                                to="/foros"
+                            >
+                                Forums
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/material">Material</Link>
+                            <Link
+                                className={`nav-link ${name === "Material" ? "fw-bold" : ""}`}
+                                to="/material"
+                            >
+                                Material
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/quizes">Quizes</Link>
+                            <Link
+                                className={`nav-link ${name === "Quizes" ? "fw-bold" : ""}`}
+                                to="/quizes"
+                            >
+                                Quizes
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/teachers">Maestros</Link>
+                            <Link
+                                className={`nav-link ${name === "Maestros" ? "fw-bold" : ""}`}
+                                to="/teachers"
+                            >
+                                Taechers
+                            </Link>
                         </li>
                     </ul>
                     <span className="navbar-text">

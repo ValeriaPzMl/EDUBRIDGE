@@ -42,7 +42,7 @@ function ForoPage() {
 
     return (
         <div>
-            <Navbar />
+            <Navbar name="Foros" />
             <div className="container container-90vh">
                 <div className="row clearfix">
                     <div className="col-lg-12">
