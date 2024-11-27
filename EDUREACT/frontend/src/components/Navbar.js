@@ -10,7 +10,7 @@ function Navbar({ name }) {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary mb-3">
+        <nav className="navbar navbar-expand-lg  mb-3">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">EduBridge</Link>
                 <button
