@@ -13,7 +13,6 @@ import fs from 'fs';
 dotenv.config();
 const materias = ["Math", "Idioms", "Science", "Grammar", "Social_sciences", "Coding", "Geometry"];
 const __filename = fileURLToPath(import.meta.url);
-//const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
