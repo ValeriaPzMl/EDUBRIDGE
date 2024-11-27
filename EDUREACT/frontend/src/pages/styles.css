@@ -52,11 +52,10 @@ h1{
     text-decoration: underline;
 }
 .prin{
-    display: inline;
+    display: inline-flex;
     margin-top: 10%;
     width: 50vh;
-    display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap; 
 }
 .prin ul li{
