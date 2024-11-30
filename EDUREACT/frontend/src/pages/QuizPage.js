@@ -17,6 +17,8 @@ function QuizPage() {
     const { showError } = useContext(ErrorContext); // Usa el contexto de errores
 
 
+
+
     useEffect(() => {
         const fetchCategorias = async () => {
             try {
@@ -42,17 +44,30 @@ function QuizPage() {
             console.error("Error al cargar los archivos PDF:", error);
         }
     };
-
+    useEffect(() => {
+        const toggleButton = document.getElementById('toggleChatList');
+        const chatList = document.getElementById('plist');
+        
+        toggleButton.addEventListener('click', () => {
+            chatList.classList.toggle('open');
+            toggleButton.textContent = chatList.classList.contains('open') ? 'Hide' : 'Show';
+        });
+    }, []);
     return (
         <div>
             <Navbar name="Quizes"/>
         <div className="container container-90vh">
             <div className="row clearfix">
-                <div className="col-lg-12">
+            <div className="col-lg-12">
+            <button className="btn" id="toggleChatList">Show</button>
+                <div className="clearfix card chat-app">
                     <CategoryList categorias={categorias} onCategoriaClick={handleCategoriaClick} categoriaSeleccionada={categoriaSeleccionada} />
                     <PdfList pdfs={pdfs} categoriaSeleccionada={categoriaSeleccionada} basePath="/QUIZZ" />
                 </div>
+                
+
             </div>
+        </div>
         </div>
         </div>
     );

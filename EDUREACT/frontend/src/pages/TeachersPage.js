@@ -25,8 +25,8 @@ function TeachersPage() {
 
     return (
         <div>
-            <Navbar name="MAestros" />
-            <div className="gen">
+            <Navbar name="Maestros" />
+            <div className="genn">
                 {maestros.map((maestro, index) => (
                     <div className="profile-card" key={index}>
                         <div className="profile-icon">

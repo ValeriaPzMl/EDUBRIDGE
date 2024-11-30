@@ -1,8 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './profile.css'; 
+
 import Navbar from '../components/Navbar';
+import './profile.css'; 
 function ProfilePage() {
     const [usuario, setUsuario] = useState(null);
     const [error, setError] = useState('');

@@ -39,13 +39,24 @@ function MaterialPage() {
             console.error("Error al cargar los archivos PDF:", error);
         }
     };
-
+    useEffect(() => {
+        const toggleButton = document.getElementById('toggleChatList');
+        const chatList = document.getElementById('plist');
+        
+        toggleButton.addEventListener('click', () => {
+            chatList.classList.toggle('open');
+            toggleButton.textContent = chatList.classList.contains('open') ? 'Hide' : 'Show';
+        });
+    }, []);
     return (
         <div>
             <Navbar name="Material"/>
             <div className="container container-90vh">
                 <div className="row clearfix">
                     <div className="col-lg-12">
+                                            <button className="btn" id="toggleChatList">Show</button>
+
+                    <div className="clearfix card chat-app">
                         <CategoryList 
                             categorias={categorias} 
                             onCategoriaClick={handleCategoriaClick} 
@@ -57,6 +68,7 @@ function MaterialPage() {
                             basePath="/PDFS" 
                         />
                     </div>
+                </div>
                 </div>
             </div>
         </div>

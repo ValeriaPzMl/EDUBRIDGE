@@ -8,16 +8,12 @@ function MenuPage() {
     return (
         <div>
             <Navbar />
-            <div className="text-center">
+            <div className="container container-90vh text-center">
                 <div className="row">
                     <div className="col"></div>
                     <div className="col-6">
                         <h1 className="tituindex">EduBridge</h1>
                         <div className="prin">
-                            <div className="icon-box">
-                                <img src="./images/areass.png" alt="Areas" className="icon" />
-                                <Link to="/areas">AREAS</Link>
-                            </div>
                             <div className="icon-box">
                                 <img src="./images/teachers.png" alt="Teachers" className="icon" />
                                 <Link to="/teachers">TEACHERS</Link>

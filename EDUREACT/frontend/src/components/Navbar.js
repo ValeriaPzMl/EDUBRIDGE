@@ -27,14 +27,6 @@ function Navbar({ name }) {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <Link
-                                className={`nav-link ${name === "Areas" ? "fw-bold" : ""}`}
-                                to="/areas"
-                            >
-                                Areas
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
                                 className={`nav-link ${name === "Foros" ? "fw-bold" : ""}`}
                                 to="/foros"
                             >

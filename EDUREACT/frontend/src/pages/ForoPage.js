@@ -39,14 +39,23 @@ function ForoPage() {
             console.error("Error al cargar los mensajes:", error);
         }
     };
-
+    useEffect(() => {
+        const toggleButton = document.getElementById('toggleChatList');
+        const chatList = document.getElementById('plist');
+        
+        toggleButton.addEventListener('click', () => {
+            chatList.classList.toggle('open');
+            toggleButton.textContent = chatList.classList.contains('open') ? 'Hide' : 'Show';
+        });
+    }, []);
     return (
         <div>
             <Navbar name="Foros" />
             <div className="container container-90vh">
                 <div className="row clearfix">
                     <div className="col-lg-12">
-                        <div className="card chat-app">
+                    <button className="btn" id="toggleChatList">Show</button>
+                        <div className="clearfix card chat-app">
                             <ChatList
                                 materias={materias}
                                 onMateriaClick={handleMateriaClick}
